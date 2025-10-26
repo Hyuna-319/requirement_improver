@@ -3,16 +3,14 @@
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 
-# .env 파일 로드
-load_dotenv()
 
-# 프로젝트 루트 디렉토리
+
 BASE_DIR = Path(__file__).parent
 
 # 프롬프트 파일 경로
 PROMPT_FILE = BASE_DIR / "prompts" / "Quality.md"
+SCORING_PROMPT_FILE = BASE_DIR / "prompts" / "scoring_criteria.md"
 
 # AI 모델 설정
 AI_MODEL = "claude-sonnet-4-5-20250929"
@@ -45,13 +43,9 @@ RULES_COUNT = {
     "R41-R42": 2     # 모듈성
 }
 
-
-def get_api_key():
-    """환경 변수에서 API 키 가져오기"""
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    if not api_key:
-        raise ValueError(
-            "환경 변수가 설정되지 않았습니다.\n"
-            ".env 파일을 생성하거나 환경 변수를 설정해주세요."
-        )
-    return api_key
+# 프록시 필요한 경우 
+USE_PROXY = False
+PROXY_SETTINGS = {
+    'http': '',   # 예: 'http://proxy.company.com:8080'
+    'https': ''   # 예: 'http://proxy.company.com:8080'
+}

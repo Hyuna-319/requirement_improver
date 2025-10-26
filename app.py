@@ -238,7 +238,7 @@ if st.button("✨ 요구사항 개선하기", disabled=(not st.session_state.api
                 
                 # 프롬프트 로드
                 quality_prompt = ai_client.load_prompt(config.PROMPT_FILE)
-                scoring_prompt_file = config.BASE_DIR / "prompts" / "scoring_criteria.md"
+                scoring_prompt_file = config.SCORING_PROMPT_FILE
                 scoring_prompt = ai_client.load_prompt(scoring_prompt_file)
                 
                 # 개선기 및 평가기 초기화
